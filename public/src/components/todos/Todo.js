@@ -1,4 +1,4 @@
-import Component from './Component.js';
+import Component from '../Component.js';
 
 class Todo extends Component {
 
@@ -12,10 +12,28 @@ class Todo extends Component {
             todo.inactive = !todo.inactive;
             onUpdate(todo);
         });
-        // DO REMOVE BUTTON NEXT!!!
+        
+        const removeButton = dom.querySelector('.remove-button');
+        removeButton.addEventListener('click', () => {
+            if(confirm(`Are you sure you want to delete "${todo}"?`)) {
+                onRemove(todo);
+            }
+        });
     }
     renderHTML() {
+        const todo = this.props.todo;
         return /*html*/`
+        <li class="todo-item">
+            ${todo.name}
+                <div>
+                    <button class="complete-button">
+                        ✔
+                    </button>
+                    <button class="remove-button">
+                        🗑
+                    </button>
+                </div>
+            </li>
             
         `;
     }

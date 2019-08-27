@@ -1,9 +1,9 @@
 import Todo from '../src/components/todos/Todo.js';
 const test = QUnit.test;
 
-QUnit.module('Todo');
+QUnit.module('Todo List');
 
-test('render', assert => {
+test('render todo', assert => {
     // arrange
     const todo = {
         id: 1,
@@ -22,8 +22,8 @@ test('render', assert => {
     `;
     
     // act
-    const todoType = new Todo({ todo });
-    const html = todoType.renderHTML();
+    const todoItem = new Todo({ todo });
+    const html = todoItem.renderHTML();
     
     // assert
     assert.htmlEqual(html, expected);

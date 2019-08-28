@@ -27,7 +27,7 @@ class TodoForm extends Component {
         <section class="todo-form-section">
             <form class="todo-form">
                 <input name="todo">
-                <button>Add</button>
+                <button class="add-todo">Add</button>
             </form>
         </section>
         `;

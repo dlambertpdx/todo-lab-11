@@ -13,9 +13,8 @@ test('render todo', assert => {
 
     const expected = /*html*/`
         <li class="todo-item">
+        <div id="todo-div" class="completed">
             Take out the trash
-            <div class="li-div">
-            <span class="${todo.completed ? 'complete' : ''}">${todo.task}</span>
             </div>
             <div>
                 <button class="completed-button"> ✔ </button>

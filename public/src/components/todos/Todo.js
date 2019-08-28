@@ -7,6 +7,10 @@ class Todo extends Component {
         const onUpdate = this.props.onUpdate;
         const onRemove = this.props.onRemove;
 
+        const todoComplete = dom.querySelector('.completed');
+        if(!todo.inactive === true){
+            todoComplete.classList.remove('completed');
+        }
         const completedButton = dom.querySelector('.completed-button');
         completedButton.addEventListener('click', () => {
             todo.inactive = !todo.inactive;
@@ -24,9 +28,8 @@ class Todo extends Component {
         const todo = this.props.todo;
         return /*html*/`
         <li class="todo-item">
+        <div id="todo-div" class="completed">
             ${todo.name}
-            <div class="li-div">
-                <span class="${todo.completed ? 'complete' : ''}">${todo.task}</span>
             </div>
             <div>
                 <button class="completed-button">

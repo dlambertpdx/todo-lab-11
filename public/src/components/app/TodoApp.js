@@ -18,7 +18,7 @@ class TodoApp extends Component {
                     .then(saved => {
                         const todos = this.state.todos;
                         todos.push(saved);
-                        todo.update({ todos });
+                        todoList.update({ todos });
                     });
             }
         });

@@ -1,40 +1,35 @@
 import Component from '../Component.js';
 
 class TodoForm extends Component {
-    onRender(form) {
+    onRender(dom) {
         const onAdd = this.props.onAdd;
-        const error = form.querySelector('p.error');
+        const form = dom.querySelector('form');
+        const input = dom.querySelector('input[name=todo]');
 
         form.addEventListener('submit', event => {
             event.preventDefault();
-            const formData = new FormData(form);
             const todo = {
-                name: formData.get('todo')
+                name: input.value
             };
-
-            error.textContent = '';
-
             onAdd(todo)
                 .then(() => {
                     form.reset();
                 })
                 .catch(err => {
-                    error.textContent = err;
+                    // eslint-disable-next-line no-console
+                    console.log(err);
                 });
         });
     }
 
     renderHTML() {
         return /*html*/`
-        <div>
+        <section class="todo-form-section">
             <form class="todo-form">
-                <fieldset class="form-field">
-                    <input name="todo" required>
-                    <button>Add</button>
-                </fieldset>
+                <input name="todo">
+                <button>Add</button>
             </form>
-            <p class="error"></p>
-        </div>
+        </section>
         `;
     }
 }

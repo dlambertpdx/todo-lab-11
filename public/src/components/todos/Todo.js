@@ -7,8 +7,8 @@ class Todo extends Component {
         const onUpdate = this.props.onUpdate;
         const onRemove = this.props.onRemove;
 
-        const inactiveButton = dom.querySelector('.inactive-button');
-        inactiveButton.addEventListener('click', () => {
+        const completedButton = dom.querySelector('.completed-button');
+        completedButton.addEventListener('click', () => {
             todo.inactive = !todo.inactive;
             onUpdate(todo);
         });
@@ -25,14 +25,17 @@ class Todo extends Component {
         return /*html*/`
         <li class="todo-item">
             ${todo.name}
-                <div>
-                    <button class="complete-button">
-                        ✔
-                    </button>
-                    <button class="remove-button">
-                        🗑
-                    </button>
-                </div>
+            <div class="li-div">
+                <span class="${todo.completed ? 'complete' : ''}">${todo.task}</span>
+            </div>
+            <div>
+                <button class="completed-button">
+                    ✔
+                </button>
+                <button class="remove-button">
+                    🗑
+                </button>
+            </div>
             </li>
             
         `;

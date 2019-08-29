@@ -19,7 +19,7 @@ class Todo extends Component {
         
         const removeButton = dom.querySelector('.remove-button');
         removeButton.addEventListener('click', () => {
-            if(confirm(`Are you sure you want to delete "${todo}"?`)) {
+            if(confirm(`Are you sure you want to delete "${todo.name}"?`)) {
                 onRemove(todo);
             }
         });
